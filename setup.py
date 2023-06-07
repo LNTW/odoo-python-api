@@ -15,7 +15,7 @@ setup(
     install_requires=[],
     keywords=["python", "odoo", "api"],
     classifiers=[
-        "Development Status :: Alpha",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
     ]
