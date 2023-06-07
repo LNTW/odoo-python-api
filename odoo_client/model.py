@@ -1,5 +1,7 @@
 from xmlrpc.client import ServerProxy
 
+from odoo_client.decorators import handle_exception
+
 
 class OdooModel:
     def __init__(self,
@@ -13,6 +15,7 @@ class OdooModel:
         self.password = password
         self.models = ServerProxy(f"{self.url}/xmlrpc/2/object")
 
+    @handle_exception
     def create_model(self,
                      name: str) -> int:
         payload = {
@@ -27,6 +30,7 @@ class OdooModel:
                                       "create",
                                       payload)
 
+    @handle_exception
     def create_model_field(self,
                            model: int,
                            name: str,

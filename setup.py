@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 with open("README.md") as readme_file:
     readme = readme_file.read()
 
-VERSION = "0.0.5"
+VERSION = "0.0.6"
 DESCRIPTION = "Simple API wrapper for Odoo's External API"
 LONG_DESCRIPTION = readme
 

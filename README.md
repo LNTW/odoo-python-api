@@ -5,7 +5,6 @@ Odoo Python Client
 Odoo API Client in Python
 
 - Free Software: MIT License
-- Examples: TBA
 
 ### Installation
 

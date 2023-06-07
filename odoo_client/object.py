@@ -1,6 +1,8 @@
 from typing import List, Union
 from xmlrpc.client import ServerProxy
 
+from odoo_client.decorators import handle_exception
+
 
 class OdooObject:
     def __init__(self,
@@ -16,6 +18,7 @@ class OdooObject:
         self.password = password
         self.models = ServerProxy(f"{self.url}/xmlrpc/2/object")
 
+    @handle_exception
     def check_access_rights(self) -> bool:
         return self.models.execute_kw(self.database,
                                       self.user_id,
@@ -25,6 +28,7 @@ class OdooObject:
                                       ["read"],
                                       {"raise_exception": False})
 
+    @handle_exception
     def count_records(self,
                       query: List[List[Union[str, int, bool]]]) -> int:
         return self.models.execute_kw(self.database,
@@ -34,6 +38,7 @@ class OdooObject:
                                       "search_count",
                                       [query])
 
+    @handle_exception
     def create_record(self,
                       payload: dict) -> int:
         return self.models.execute_kw(self.database,
@@ -43,6 +48,7 @@ class OdooObject:
                                       "create",
                                       [payload])
 
+    @handle_exception
     def delete_records(self,
                        pks: List[int]) -> bool:
         return self.models.execute_kw(self.database,
@@ -52,6 +58,7 @@ class OdooObject:
                                       "unlink",
                                       [pks])
 
+    @handle_exception
     def get_fields(self) -> dict:
         return self.models.execute_kw(self.database,
                                       self.user_id,
@@ -61,6 +68,7 @@ class OdooObject:
                                       [],
                                       {"attributes": ["string", "help", "type"]})
 
+    @handle_exception
     def list_records(self,
                      query: List[List[Union[str, int, bool]]],
                      pagination: Union[dict, None] = None) -> List[int]:
@@ -79,6 +87,7 @@ class OdooObject:
                                       "search",
                                       [query])
 
+    @handle_exception
     def read_records(self,
                      pks: List[int],
                      fields: Union[List[str], None] = None) -> List[dict]:
@@ -97,6 +106,7 @@ class OdooObject:
                                       "read",
                                       [pks])
 
+    @handle_exception
     def search_read(self,
                     query: List[List[Union[str, int, bool]]],
                     fields: List[str],
@@ -112,6 +122,7 @@ class OdooObject:
                                       [query],
                                       context)
 
+    @handle_exception
     def update_record(self,
                       pk: int,
                       payload: dict) -> bool:

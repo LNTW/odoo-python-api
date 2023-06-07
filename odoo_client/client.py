@@ -1,6 +1,7 @@
 from typing import Union
 from xmlrpc.client import ServerProxy
 
+from odoo_client.decorators import handle_exception
 from odoo_client.model import OdooModel
 from odoo_client.object import OdooObject
 
@@ -17,6 +18,7 @@ class OdooClient:
         self.password = password
         self.user_id: Union[int, None] = None
 
+    @handle_exception
     def __autheticate(self):
         common = ServerProxy(f"{self.url}/xmlrpc/2/common")
         self.user_id = common.authenticate(self.database, self.username, self.password, {})
