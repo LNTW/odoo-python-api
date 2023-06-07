@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 DESCRIPTION = "Simple API wrapper for Odoo's External API"
 LONG_DESCRIPTION = "Simple API wrapper for Odoo's External API"
 
@@ -15,10 +15,8 @@ setup(
     install_requires=[],
     keywords=["python", "odoo", "api"],
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: Alpha",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
-        "Operating System :: MacOS :: MacOS X",
-        "Operating System :: Microsoft :: Windows"
     ]
 )
